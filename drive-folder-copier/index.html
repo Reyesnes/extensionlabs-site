@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Drive Folder Copier — ExtensionLabs</title>
+<style>
+  :root { --blue:#1a73e8; --text:#202124; --muted:#5f6368; --border:#e0e0e0; }
+  * { box-sizing: border-box; }
+  body { font-family: "Google Sans", Roboto, Arial, sans-serif; color: var(--text); margin: 0; line-height: 1.6; }
+  header { padding: 48px 24px 32px; text-align: center; }
+  header h1 { font-size: 26px; margin: 0 0 8px; }
+  header p { color: var(--muted); max-width: 480px; margin: 0 auto; }
+  main { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+  h2 { font-size: 18px; margin-top: 36px; }
+  ul { color: var(--text); }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+  .plan { border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .plan h3 { margin: 0 0 4px; font-size: 15px; }
+  .plan .price { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+  .plan ul { font-size: 13px; padding-left: 18px; margin: 0; }
+  footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; font-size: 13px; color: var(--muted); }
+  footer a { color: var(--muted); margin: 0 8px; }
+  a.back { color: var(--blue); text-decoration: none; font-size: 13px; }
+</style>
+</head>
+<body>
+  <header>
+    <p><a class="back" href="/">← ExtensionLabs</a></p>
+    <h1>Drive Folder Copier</h1>
+    <p>Copy any Google Drive folder or file — including all subfolders — directly into your own My Drive, using Google Drive's own picker.</p>
+  </header>
+  <main>
+    <h2>What it does</h2>
+    <ul>
+      <li>Copies any folder or file, including all subfolders and files</li>
+      <li>Select what to copy using Google Drive's own picker interface — no manual links</li>
+      <li>Choose any folder as the destination</li>
+      <li>Keep or remove the copy's sharing permissions</li>
+    </ul>
+
+    <h2>Common uses</h2>
+    <ul>
+      <li>Copy a folder someone shared with you</li>
+      <li>Create backups of folders</li>
+      <li>Reorganize your folder structure</li>
+      <li>Retain access to files from employees who are leaving</li>
+    </ul>
+
+    <h2>Plans</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Essential</h3>
+        <p class="price">$3.99/mo · $29/yr · $67 one-time</p>
+        <ul>
+          <li>For individual, occasional use</li>
+          <li>Up to 250GB per copy (monthly)</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Advanced</h3>
+        <p class="price">$6.99/mo · $49/yr · $107 one-time</p>
+        <ul>
+          <li>For professionals and small teams</li>
+          <li>Up to 3TB per copy (monthly)</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Business</h3>
+        <p class="price">From $19.99/mo · from $179/yr · from $367 one-time</p>
+        <ul>
+          <li>For organizations and critical operations</li>
+          <li>Up to 100TB per copy (monthly)</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">A free tier includes 2 lifetime copy operations before requiring an upgrade.</p>
+
+    <h2>Privacy</h2>
+    <p>Drive Folder Copier does not collect, store, or transmit your Drive files or folder data to any server. All copying happens directly between your browser and your own Google account. See the full <a href="/drive-folder-copier/privacy">Privacy Policy</a>.</p>
+  </main>
+  <footer>
+    <p>
+      <a href="/drive-folder-copier/privacy">Privacy Policy</a> ·
+      <a href="/drive-folder-copier/terms">Terms of Service</a> ·
+      <a href="/drive-folder-copier/refunds">Refund Policy</a> ·
+      <a href="mailto:support@extensionlabs.online">Contact</a>
+    </p>
+    <p>Google Drive is a trademark of Google LLC.</p>
+  </footer>
+</body>
+</html>
