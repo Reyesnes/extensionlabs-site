@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Privacy Policy — Drive Folder Copier</title>
+<style>
+  body { font-family: "Google Sans", Roboto, Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 48px 24px 80px; line-height: 1.6; color: #14171f; }
+  h1 { font-size: 22px; } h2 { font-size: 16px; margin-top: 32px; border-bottom: 1px solid #e6e9ef; padding-bottom: 6px; }
+  a { color: #1a73e8; } .updated { color: #5b6472; font-size: 13px; }
+  .back { display: block; margin-bottom: 16px; color: #5b6472; font-size: 13px; }
+</style>
+</head>
+<body>
+  <a class="back" href="./">← Legal documents</a>
+  <h1>Drive Folder Copier — Privacy Policy</h1>
+  <p class="updated">Last updated: August 2026</p>
+
+  <h2>Summary</h2>
+  <p>Drive Folder Copier is a browser extension that copies Google Drive folders and files into your own "My Drive." The extension itself does not collect, store, or transmit your Drive files, folder names, or file contents to any server. A separate licensing backend, described below, receives only anonymous usage counters — never your files or their metadata.</p>
+
+  <h2>What the extension accesses (Google Drive data)</h2>
+  <p>The extension requests OAuth authorization to access your Google Drive account (scope: <code>https://www.googleapis.com/auth/drive</code>), used exclusively to read, create, and copy files and folders on your behalf, with your explicit consent through Google's own authorization screen. These operations happen directly between your browser and Google's servers. We do not operate any server that receives your Drive files, file names, folder structures, or file contents.</p>
+
+  <h2>What our licensing backend receives (account &amp; billing data)</h2>
+  <p>To operate the free tier and paid subscriptions, the extension communicates with a licensing backend we operate (built on Vercel and Supabase). This backend receives only:</p>
+  <ul>
+    <li>An anonymous, randomly generated installation identifier</li>
+    <li>A license key, if you have an active subscription</li>
+    <li>The total byte size and item count of a copy operation (never file names, folder names, or Drive IDs)</li>
+  </ul>
+  <p>This backend never receives your Google account email, OAuth tokens, file names, folder names, or Drive identifiers.</p>
+
+  <h2>Payment information</h2>
+  <p>Subscriptions and one-time purchases are processed by <a href="https://www.paddle.com" target="_blank" rel="noopener">Paddle.com Market Limited</a>, acting as our Merchant of Record. Paddle collects and processes your payment details, billing address, and email directly — we do not receive or store your card details. See <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle's Privacy Policy</a> for details on how they handle your data.</p>
+
+  <h2>Local storage</h2>
+  <p>The extension stores a small amount of data locally in your browser (<code>chrome.storage.local</code>): your anonymous installation ID, your license key if you have one, your copy progress, and your preferences (such as whether to keep sharing permissions on copies). This data stays on your device.</p>
+
+  <h2>Data we do NOT collect</h2>
+  <p>We do not collect: the contents of your files, your file or folder names, your browsing history, your location, or any data unrelated to operating this extension's core function and license enforcement.</p>
+
+  <h2>Your rights</h2>
+  <p>You can revoke the extension's access to your Google account at any time via your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions</a> page. To request deletion of your installation record from our licensing backend, contact us at the email below.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, this page will be updated with a new revision date.</p>
+
+  <h2>Contact</h2>
+  <p>Néstor Reyes, independent developer (autónomo), Madrid, Spain.<br />
+  Email: <a href="mailto:support@extensionlabs.online">support@extensionlabs.online</a></p>
+</body>
+</html>
