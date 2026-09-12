@@ -13,31 +13,35 @@
 <body>
   <a class="back" href="./">← Legal documents</a>
   <h1>Drive Folder Copier — Privacy Policy</h1>
-  <p class="updated">Last updated: August 2026</p>
+  <p class="updated">Last updated: September 2026</p>
 
   <h2>Summary</h2>
-  <p>Drive Folder Copier is a browser extension that copies Google Drive folders and files into your own "My Drive." The extension itself does not collect, store, or transmit your Drive files, folder names, or file contents to any server. A separate licensing backend, described below, receives only anonymous usage counters — never your files or their metadata.</p>
+  <p>Drive Folder Copier is a browser extension that copies Google Drive folders and files into your own "My Drive." The extension itself does not collect, store, or transmit your Drive files, folder names, or file contents to any server. A separate licensing backend, described below, receives only anonymous usage counters and a one-way identifier derived from your Google account — never your files or their metadata.</p>
 
   <h2>What the extension accesses (Google Drive data)</h2>
-  <p>The extension requests OAuth authorization to access your Google Drive account (scope: <code>https://www.googleapis.com/auth/drive</code>), used exclusively to read, create, and copy files and folders on your behalf, with your explicit consent through Google's own authorization screen. These operations happen directly between your browser and Google's servers. We do not operate any server that receives your Drive files, file names, folder structures, or file contents.</p>
+  <p>The extension requests OAuth authorization for two scopes:</p>
+  <ul>
+    <li><code>https://www.googleapis.com/auth/drive</code> — used exclusively to read, create, and copy files and folders on your behalf, with your explicit consent through Google's own authorization screen. These operations happen directly between your browser and Google's servers. We do not operate any server that receives your Drive files, file names, folder structures, or file contents.</li>
+    <li><code>https://www.googleapis.com/auth/userinfo.email</code> — used solely to recognize your paid subscription across multiple devices. See "What our licensing backend receives" below for exactly how this works.</li>
+  </ul>
 
   <h2>What our licensing backend receives (account &amp; billing data)</h2>
-  <p>To operate the free tier and paid subscriptions, the extension communicates with a licensing backend we operate (built on Vercel and Supabase). This backend receives only:</p>
+  <p>To operate the free tier and paid subscriptions — including recognizing an existing paid plan if you use the extension on more than one device — the extension communicates with a licensing backend we operate (built on Vercel and Supabase). This backend receives only:</p>
   <ul>
-    <li>An anonymous, randomly generated installation identifier</li>
+    <li>A one-way cryptographic hash (SHA-256) derived from your Google account's stable identifier. This hash cannot be reversed to recover your email address or any other information about your account — it functions purely as an anonymous, consistent reference so that the same Google account is recognized as the same customer across different devices or browser installs.</li>
     <li>A license key, if you have an active subscription</li>
     <li>The total byte size and item count of a copy operation (never file names, folder names, or Drive IDs)</li>
   </ul>
-  <p>This backend never receives your Google account email, OAuth tokens, file names, folder names, or Drive identifiers.</p>
+  <p>This backend never receives your actual Google account email in plaintext, your OAuth access token, file names, folder names, or Drive identifiers. Your email address, if read via the <code>userinfo.email</code> scope, is stored only locally in your browser (see "Local storage" below) and is never transmitted anywhere.</p>
 
   <h2>Payment information</h2>
   <p>Subscriptions and one-time purchases are processed by <a href="https://www.paddle.com" target="_blank" rel="noopener">Paddle.com Market Limited</a>, acting as our Merchant of Record. Paddle collects and processes your payment details, billing address, and email directly — we do not receive or store your card details. See <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle's Privacy Policy</a> for details on how they handle your data.</p>
 
   <h2>Local storage</h2>
-  <p>The extension stores a small amount of data locally in your browser (<code>chrome.storage.local</code>): your anonymous installation ID, your license key if you have one, your copy progress, and your preferences (such as whether to keep sharing permissions on copies). This data stays on your device.</p>
+  <p>The extension stores a small amount of data locally in your browser (<code>chrome.storage.local</code>): the identifier described above, your Google account email (kept on-device only, for potential future account-recovery support — never transmitted), your license key if you have one, your copy progress, and your preferences (such as whether to keep sharing permissions on copies). This data stays on your device.</p>
 
   <h2>Data we do NOT collect</h2>
-  <p>We do not collect: the contents of your files, your file or folder names, your browsing history, your location, or any data unrelated to operating this extension's core function and license enforcement.</p>
+  <p>We do not collect: the contents of your files, your file or folder names, your browsing history, your location, your Google account email in a form that leaves your device, or any data unrelated to operating this extension's core function and license enforcement.</p>
 
   <h2>Your rights</h2>
   <p>You can revoke the extension's access to your Google account at any time via your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions</a> page. To request deletion of your installation record from our licensing backend, contact us at the email below.</p>
