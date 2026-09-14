@@ -34,6 +34,12 @@
   </ul>
   <p>This backend never receives your actual Google account email in plaintext, your OAuth access token, file names, folder names, or Drive identifiers. Your email address, if read via the <code>userinfo.email</code> scope, is stored only locally in your browser (see "Local storage" below) and is never transmitted anywhere.</p>
 
+  <h2>How we protect your data</h2>
+  <p>We use industry-standard security measures to protect the confidentiality and integrity of the data our licensing backend processes. All communication between the extension, our backend, and Google's servers happens exclusively over encrypted HTTPS/TLS connections — nothing is ever transmitted in plaintext over the network. The one-way SHA-256 hash described above adds a further layer of protection: even in the unlikely event of unauthorized access to our database, the values stored there cannot be reversed to recover your Google account email or identifier. Access to our backend's database is restricted to server-side infrastructure only, authenticated with a private service key that is never exposed to the extension, the browser, or any public-facing surface.</p>
+
+  <h2>Data retention and deletion</h2>
+  <p>We retain the anonymous identifier, license information, and copy-operation counters described above for as long as your account remains active, so that your license stays recognized across devices. If you stop using the extension, this data simply stops being accessed — it is not actively deleted on a schedule, but you can request its deletion at any time by contacting us at the email below, and we will remove it within a reasonable timeframe.</p>
+
   <h2>Payment information</h2>
   <p>Subscriptions and one-time purchases are processed by <a href="https://www.paddle.com" target="_blank" rel="noopener">Paddle.com Market Limited</a>, acting as our Merchant of Record. Paddle collects and processes your payment details, billing address, and email directly — we do not receive or store your card details. See <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle's Privacy Policy</a> for details on how they handle your data.</p>
 
