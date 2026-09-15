@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Drive Folder Copier",
+  "version": "1.12.7",
+  "description": "Copy shared Google Drive folders directly into your My Drive, including all subfolders.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "identity",
+    "storage",
+    "notifications",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://drive.google.com/*",
+    "https://drive-folder-copier-backend.vercel.app/*"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "https://reyesnes.github.io/*",
+      "https://extensionlabs.online/*"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://drive.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

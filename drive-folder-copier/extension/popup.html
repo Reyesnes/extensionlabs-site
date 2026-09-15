@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Drive Folder Copier</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="icons/icon48.png" alt="" class="logo" />
+      <div class="header-text">
+        <h1>Drive Folder Copier</h1>
+        <p class="subtitle">Pick, then choose where to put it.</p>
+      </div>
+    </header>
+
+    <button id="pickerBtn" class="primary-btn">
+      <span class="btn-icon">📁</span>
+      <span class="btn-label">
+        <strong>Select folder or file</strong>
+        <small>Uses Google Drive's own picker</small>
+      </span>
+    </button>
+
+    <button id="manualLinkToggle" class="link-toggle">Paste a link instead ▾</button>
+
+    <div id="manualLinkSection" class="manual-link-section hidden">
+      <label for="folderUrl">Folder link</label>
+      <input type="text" id="folderUrl" placeholder="https://drive.google.com/drive/folders/..." />
+      <button id="copyBtn" class="secondary">Copy to My Drive</button>
+      <button id="useCurrentTabBtn" class="secondary">Use currently open folder</button>
+    </div>
+
+    <label class="checkbox-row">
+      <input type="checkbox" id="keepPermissionsCheckbox" />
+      <span>Keep sharing permissions on the copy</span>
+    </label>
+
+    <div id="statusBox" class="status-box hidden">
+      <div class="status-header">
+        <span id="statusIcon" class="status-icon"></span>
+        <p id="statusLabel">Preparing...</p>
+      </div>
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <p id="progressText" class="progress-text"></p>
+      <p id="currentItem" class="current-item"></p>
+      <div class="job-controls">
+        <button id="pauseResumeBtn" class="job-btn">⏸ Pause</button>
+        <button id="cancelBtn" class="job-btn cancel">✕ Cancel</button>
+      </div>
+    </div>
+
+    <div id="errorBox" class="error-box hidden"></div>
+    <div id="successBox" class="success-box hidden"></div>
+
+    <footer id="planFooter">
+      <span id="planBadge" class="plan-badge">Free</span>
+      <span class="footer-links">
+        <button id="switchAccountBtn" class="upgrade-link muted">Switch account</button>
+        <button id="changePlanBtn" class="upgrade-link hidden">Change plan</button>
+        <button id="upgradeBtn" class="upgrade-link">Upgrade →</button>
+      </span>
+    </footer>
+
+    <div id="upgradePanel" class="upgrade-panel hidden">
+      <label for="planSelect">Plan</label>
+      <select id="planSelect">
+        <option value="essential">Essential — up to 250GB/copy</option>
+        <option value="advanced">Advanced — up to 3TB/copy</option>
+        <option value="business">Business — up to 100TB/copy</option>
+      </select>
+      <label for="billingSelect">Billing</label>
+      <select id="billingSelect">
+        <option value="monthly">Monthly</option>
+        <option value="annual">Annual</option>
+        <option value="perpetual">Perpetual (one-time)</option>
+      </select>
+      <button id="goToCheckoutBtn" class="primary-btn small">Continue to checkout</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
