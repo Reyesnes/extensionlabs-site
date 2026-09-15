@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Select a folder — Drive Folder Copier</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Google Sans", Roboto, Arial, sans-serif;
+      background: #202124;
+      color: #e8eaed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #status {
+      text-align: center;
+      font-size: 14px;
+      max-width: 420px;
+      padding: 0 24px;
+    }
+    #status.error { color: #f28b82; }
+  </style>
+</head>
+<body>
+  <div id="status">Connecting to Google Drive…</div>
+  <script src="picker.js"></script>
+</body>
+</html>
