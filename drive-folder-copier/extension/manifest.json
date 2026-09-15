@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Drive Folder Copier",
+  "version": "1.12.8",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0o6+vGcSFZ3XVwOjYFIPicMuSyZknGasiysKzuByU/jxTSA1Bu4VL+NfaPxMXHpFX7zcCpYfbG8ob/ZUUAmYB4LOup2F889Wu5wTAIrVTz45Xz3VsvpmJ6AjVWT2AQKVO0HJ7eEFPs/afoeXRHMKV0LkKGm5hcFFnEs18jNT0/HLVB1wvm3SGYwFjpkbFPDTaG+523qq/dn0fLNTu5Rj3QjdPwdkv2WWV7DFucSpEwSbuGnN9sBSVcYrgHQ8yqDVmVTMLiLYGQJTLYfP36Fk7XILS9pNgT3KkybtO6X6+JajOHSbnJNuQ+r3n/2JK6YKtFKOy2TUFwGq9MvRfCPPhQIDAQAB",
+  "description": "Copy shared Google Drive folders directly into your My Drive, including all subfolders.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "identity",
+    "storage",
+    "notifications",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://drive.google.com/*",
+    "https://drive-folder-copier-backend.vercel.app/*"
+  ],
+  "externally_connectable": {
+    "matches": ["https://reyesnes.github.io/*", "https://extensionlabs.online/*"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://drive.google.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
