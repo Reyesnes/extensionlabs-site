@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Drive Folder Copier Lite</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="icons/icon48.png" alt="" class="logo" />
+      <div class="header-text">
+        <h1>Drive Folder Copier <span class="lite-tag">Lite</span></h1>
+        <p class="subtitle">Select any files, copy them all at once.</p>
+      </div>
+    </header>
+
+    <button id="pickerBtn" class="primary-btn">
+      <span class="btn-icon">📁</span>
+      <span class="btn-label">
+        <strong>Select files to copy</strong>
+        <small>Pick as many as you want, one Picker window</small>
+      </span>
+    </button>
+
+    <div id="statusBox" class="status-box hidden">
+      <div class="status-header">
+        <span id="statusIcon" class="status-icon"></span>
+        <p id="statusLabel">Preparing...</p>
+      </div>
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <p id="progressText" class="progress-text"></p>
+      <p id="currentItem" class="current-item"></p>
+      <div class="job-controls">
+        <button id="cancelBtn" class="job-btn cancel">✕ Cancel</button>
+      </div>
+    </div>
+
+    <div id="errorBox" class="error-box hidden"></div>
+    <div id="successBox" class="success-box hidden"></div>
+
+    <footer id="planFooter">
+      <span id="balanceBadge" class="plan-badge">Loading…</span>
+      <span class="footer-links">
+        <button id="switchAccountBtn" class="upgrade-link muted">Switch account</button>
+        <button id="buyMoreBtn" class="upgrade-link">Buy more →</button>
+      </span>
+    </footer>
+
+    <div id="buyPanel" class="upgrade-panel hidden">
+      <label for="packSelect">Credit pack</label>
+      <select id="packSelect">
+        <option value="pack_10gb">10 GB — $2.99</option>
+        <option value="pack_50gb">50 GB — $9.99</option>
+        <option value="pack_200gb">200 GB — $29.99</option>
+      </select>
+      <p class="pack-note">One-time purchase — credits never expire, no subscription.</p>
+      <button id="goToCheckoutBtn" class="primary-btn small">Continue to checkout</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

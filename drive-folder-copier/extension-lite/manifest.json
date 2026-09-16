@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Drive Folder Copier Lite",
+  "version": "0.1.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy5844P3NoAz8Hk9mdUXFjEQ9hXpyiec30bPtPGDxDvjbY8A2sithncoX1LIPumEXXwuFTIndjJrLzovUPCbDMlNJC/my/jcnNg4M9PbqB1uAdQkobSol2Jw88DLUuCIsObgZk63McsYS7LpkUDnZFMsoH1gfWpn132dYn5um8VZHicS02uJh3hoDkEhfAJAbGhcLTx7lX+h6okYWLbIcQnLXvt8WZJX6ZHg/FPjfLs5ZBuZR/eRTpVZtbj5RYM0aYyo2iZXhEe68VRAi2oQssCJcyMwi0Wo3yWqgZ93FMsvGKosvjrFlA4T28WBV+6CLdv4nVy5/fUvA6VzkbqhMtQIDAQAB",
+  "description": "Copy specific Google Drive files into your My Drive. Select as many as you like at once — no verification wait, no restricted permissions.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "identity",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://drive-folder-copier-backend.vercel.app/*"
+  ],
+  "externally_connectable": {
+    "matches": ["https://reyesnes.github.io/*", "https://extensionlabs.online/*"]
+  }
+}
