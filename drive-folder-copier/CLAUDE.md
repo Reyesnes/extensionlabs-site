@@ -3,7 +3,7 @@
 Chrome/Edge extension (Manifest V3) that recursively copies a Google Drive folder — including all subfolders — into the user's own My Drive. Freemium: 2 free operations, then paid plans via Paddle.
 
 ## Status
-- Extension: v1.12.7 (local dev). Chrome Web Store has a much older package.
+- Extension: v1.12.8 (local dev). Chrome Web Store has a much older package.
 - Google OAuth verification: submitted, under review. One round of reviewer feedback already answered.
 - Licensing backend: v0.9.3, live (separate private repo `drive-folder-copier-backend`).
 
