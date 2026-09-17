@@ -248,7 +248,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 // redirect URI is stable — no chicken-and-egg problem). Do NOT reuse the
 // Pro extension's Client ID: this one must only ever request drive.file +
 // userinfo.email, and mixing clients makes that harder to audit.
-const GOOGLE_OAUTH_CLIENT_ID = "REPLACE_ME.apps.googleusercontent.com";
+const GOOGLE_OAUTH_CLIENT_ID = "496448603244-4eii5g99g579ooir23f7r46nv6jhuss5.apps.googleusercontent.com";
 
 // Non-sensitive scopes only — this is precisely what lets this product skip
 // Google's OAuth verification entirely. Never add "drive" or
