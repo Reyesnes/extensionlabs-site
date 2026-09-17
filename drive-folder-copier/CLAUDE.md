@@ -3,15 +3,21 @@
 Two sibling products sharing one brand and one licensing backend:
 
 - **Pro** (`extension/`): Chrome/Edge extension that recursively copies a Google Drive folder — including all subfolders — into the user's own My Drive. Needs Google's restricted `drive` OAuth scope, which requires an annual paid ADA-CASA security assessment. Freemium: 2 free operations, then subscription/perpetual plans via Paddle.
-- **Lite** (`extension-lite/`): copies only the specific files the user explicitly multiselects via Google's Picker — no recursion, no folder selection. Uses only the non-sensitive `drive.file` scope, so it needs **no OAuth verification and no CASA assessment at all**. Exists specifically to generate revenue without waiting on (or paying for) Pro's verification. Freemium: 1 GiB free (cumulative), then prepaid credit packs via Paddle — no subscription.
+- **Lite** (`extension-lite/`): copies only the specific files the user explicitly multiselects via Google's Picker — no recursion, no folder selection. Uses only the non-sensitive `drive.file` scope, so it needs **no OAuth verification and no CASA assessment at all**. Exists specifically to generate revenue without waiting on (or paying for) Pro's verification. Billing model (built, audited, not yet turned on): 1 GiB free cumulative, then prepaid credit packs via Paddle. **Currently running fully free, billing disabled on purpose** — see "Billing status" below.
 
 Never blur these two together. Lite must never request `drive`/`drive.readonly`/`drive.metadata.readonly` or gain folder recursion — see `.claude/rules/extension-lite-code.md`. If Pro's verification later completes and CASA is paid, Lite still has standalone value (instant availability, no restricted permissions) and can keep running alongside it — it isn't meant to be retired once Pro is unblocked.
 
 ## Status
 - Pro extension: v1.12.8 (local dev). Chrome Web Store has a much older package.
 - Pro Google OAuth verification: submitted, under review, blocked on an ADA-CASA AL1 assessment (~$500-720/yr, due Dec 13 2026) that isn't funded yet.
-- Lite extension: v0.1.0, in development, not yet published. Needs: a real OAuth Client ID (see `extension-lite/README.md`), real icon art (currently placeholder — reused Pro's icons), the `supabase_schema_lite.sql` migration applied in Supabase, real Paddle Price IDs for the 3 credit packs, and a reviewed/published privacy policy (see "Legal pages" below) before it can ship.
-- Licensing backend: v0.9.3 (Pro) + new Lite endpoints added, not yet deployed/tested end-to-end. Separate private repo `drive-folder-copier-backend`.
+- Lite extension: v0.1.0, in development, not yet published anywhere (not even internally installed yet). Currently free/unlimited by design (`BILLING_ENABLED = false` in `background.js` and `popup.js`) — Néstor wants to try the core flow first before wiring up money. Only blocker to internal testing now: a real OAuth Client ID (see `extension-lite/README.md`) — nothing else on the old checklist (Paddle Price IDs, Supabase migration, icons, privacy policy) blocks *internal* testing, only public release.
+- Licensing backend: v0.9.3 (Pro) + new Lite endpoints added and CASA-audited, not yet deployed to Vercel (not needed while `BILLING_ENABLED = false`).
+
+## Billing status (Lite)
+The full billing implementation exists and passed the casa-guardian audit (see `.claude/rules/extension-lite-code.md` and the backend's `lite-*` endpoints), but is switched off:
+- `extension-lite/background.js`: `BILLING_ENABLED = false` skips `checkQuota`/`logOperation` entirely — copies never touch the backend.
+- `extension-lite/popup.js`: same flag hides the "Buy more" button and shows a plain "Free (internal test)" badge instead of calling the backend for a balance.
+To turn billing back on: flip both flags to `true`, deploy the backend (apply `supabase_schema_lite.sql`, set env vars, deploy to Vercel), fill in the OAuth Client ID and Paddle Price IDs, then re-test end to end before publishing.
 
 ## Folders
 `extension/` Pro source · `extension-lite/` Lite source · `picker/` Pro hosted Picker · `picker-lite/` Lite hosted Picker · `checkout/` Pro hosted Paddle checkout (subscriptions/perpetual) · `checkout-lite/` Lite hosted Paddle checkout (one-time credit packs) · `legal-pages/` privacy, terms, refunds · `index.html` product page.

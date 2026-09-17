@@ -18,6 +18,14 @@ const balanceBadge = document.getElementById("balanceBadge");
 const CHECKOUT_URL = "https://extensionlabs.online/drive-folder-copier/checkout-lite/";
 const HOSTED_PICKER_URL = "https://extensionlabs.online/drive-folder-copier/picker-lite/";
 
+// Mirrors BILLING_ENABLED in background.js — keep both in sync. While
+// false (internal testing), the buy-credits UI is hidden entirely instead
+// of pointing at a checkout flow that isn't configured yet.
+const BILLING_ENABLED = false;
+if (!BILLING_ENABLED) {
+  buyMoreBtn.classList.add("hidden");
+}
+
 switchAccountBtn.addEventListener("click", () => {
   switchAccountBtn.disabled = true;
   errorBox.classList.add("hidden");
@@ -60,6 +68,10 @@ function formatBytes(bytes) {
 }
 
 function refreshBalance() {
+  if (!BILLING_ENABLED) {
+    balanceBadge.textContent = "Free (internal test)";
+    return;
+  }
   chrome.runtime.sendMessage({ type: "GET_BALANCE" }, (response) => {
     if (!response || response.error) {
       balanceBadge.textContent = "Free";

@@ -45,6 +45,15 @@ let currentJob = null;
 // ID, or anything that identifies what was copied.
 const BACKEND_URL = "https://drive-folder-copier-backend.vercel.app";
 
+// Internal-testing switch: while false, the extension skips the backend
+// entirely (no quota check, no usage logging, no balance calls) and every
+// copy is unlimited. This is deliberate — Néstor wants to try the core
+// flow (Picker multiselect + drive.file + copy) before wiring up billing.
+// The billing code beneath this flag is fully built and CASA-audited
+// (lite-check-quota / lite-log-operation / lite-get-balance in the backend
+// repo) — flip this back to true once ready to charge, don't rewrite it.
+const BILLING_ENABLED = false;
+
 // ---------- Identity = Google account (same derivation as Pro) ----------
 // install_id is a SHA-256 hash of the signed-in Google account's stable id,
 // formatted UUID-shaped. This intentionally produces the SAME install_id
@@ -426,7 +435,10 @@ async function startCopy(selectedDocs) {
 
     // Ask the backend "am I allowed to do this?" BEFORE touching the Drive
     // API for the actual copy. Only anonymous byte/item counts are sent.
-    await checkQuota(totalBytes, itemCount, token);
+    // Skipped entirely while BILLING_ENABLED is false (internal testing).
+    if (BILLING_ENABLED) {
+      await checkQuota(totalBytes, itemCount, token);
+    }
 
     const rootUser = await authedFetch(`${DRIVE_API}/files/root?fields=id`, {}, token);
     const stamp = new Date().toISOString().slice(0, 10);
@@ -461,7 +473,9 @@ async function startCopy(selectedDocs) {
     copyState.status = "done";
     broadcastState();
 
-    await logOperation(totalBytes, itemCount, token);
+    if (BILLING_ENABLED) {
+      await logOperation(totalBytes, itemCount, token);
+    }
 
     chrome.notifications.create({
       type: "basic",
@@ -503,6 +517,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       .catch((err) => sendResponse({ error: err.message }));
     return true;
   } else if (message.type === "GET_BALANCE") {
+    if (!BILLING_ENABLED) {
+      sendResponse({ unlimited: true });
+      return true;
+    }
     getAuthToken(true)
       .then((token) => fetchBalance(token))
       .then((balance) => sendResponse(balance))
