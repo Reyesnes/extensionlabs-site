@@ -29,3 +29,9 @@ Don't change the publishing status or user type in Google Cloud Console — Goog
 
 ## Legal pages
 `legal-pages/` is guarded by a hook that blocks direct edits — legally load-bearing content needs your explicit confirmation of what changed and why. Lite needs its own published privacy policy (a draft exists at `extension-lite/PRIVACY_POLICY.md`, referencing an as-yet-unpublished `legal-pages/privacy-lite.html`) before it can go live — that publication step is intentionally not done yet, pending your review.
+
+## Funding the Pro CASA assessment (~$540/yr)
+Since Pro's OAuth verification is blocked on an unfunded ADA-CASA AL1 assessment (see "Status" above), Néstor is raising the ~$540 through two channels, both live:
+- **GitHub Sponsors**: https://github.com/sponsors/Reyesnes — profile configured (bio, introduction, monthly goal $50/mo framed as ongoing sustainability, not the urgent one-time ask). `.github/FUNDING.yml` enables the Sponsor button across the repo.
+- **Ko-fi**: https://ko-fi.com/reyesnes — the actual "$540, ASAP" one-time campaign, with a public goal ("Google Security Certification (CASA)", 0/$540) and a pinned intro post. This is the primary link to share when promoting the fundraiser (Reddit, Product Hunt, personal outreach), since Ko-fi supports one-time cumulative goals and GitHub Sponsors' goal is monthly-recurring only, not a lump-sum tracker.
+Considered and rejected: hiring cheap Upwork freelancers to "do the CASA assessment" — confirmed via research that only ADA-authorized labs (e.g. TAC Security) can issue the Letter of Validation Google accepts; freelancers can at most help with prep/remediation work, not the final certification.
