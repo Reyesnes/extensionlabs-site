@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Drive Folder Copier — ExtensionLabs</title>
 <meta name="description" content="Copy any Google Drive folder or file, including all subfolders, directly into your own My Drive." />
-<link rel="icon" type="image/png" href="https://res.cloudinary.com/dbzl75u3h/image/upload/v1786389862/icon512_z0b4hg.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <style>
   :root { --blue:#1a73e8; --blue-dark:#1765cc; --ink:#14171f; --muted:#5b6472; --bg:#fff; --bg-soft:#f6f8fb; --border:#e6e9ef; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,7 +15,8 @@
   nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
-  .brand .mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 800; }
+  .brand .mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, #3B82F6, #8B5CF6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .brand .mark svg { width: 60%; height: 60%; }
   .crumb { font-size: 13px; color: var(--muted); }
   .hero { padding: 72px 0 56px; text-align: center; }
   .hero-icon { width: 64px; height: 64px; margin: 0 auto 20px; }
@@ -54,7 +55,12 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="/"><span class="mark">E</span>ExtensionLabs</a>
+    <a class="brand" href="/">
+      <span class="mark">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 9 L20 16 L12 23" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      ExtensionLabs
+    </a>
     <span class="crumb"><a href="/">Home</a> / Drive Folder Copier</span>
   </div>
 </nav>
